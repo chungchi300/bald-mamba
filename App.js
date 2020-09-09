@@ -1,21 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
 
-export default function App() {
+import React from "react";
+import { SafeAreaView, StyleSheet, View } from "react-native";
+import { Provider } from "react-redux";
+import Router from "./routes";
+import configureStore from "./configureStore";
+import { Provider as PaperProvider } from "react-native-paper";
+
+const { history, store } = configureStore();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <Router history={history} />
+    </Provider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10,
   },
 });
+
+export default App;
