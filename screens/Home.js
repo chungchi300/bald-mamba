@@ -8,49 +8,28 @@ const Home = ({ history }) => {
   let [open, setOpen] = useState(false);
   let [active, setActive] = useState("home");
   return (
-    <SideMenu
-      open={open}
-      menu={
-        <Drawer.Section title="Some title">
-          <Drawer.Item
-            label="First Item"
-            active={active === "home"}
-            onPress={() => setActive("home")}
-          />
-          <Drawer.Item
-            label="Second Item"
-            active={active === "second"}
-            onPress={() => setActive("second")}
-          />
-        </Drawer.Section>
-      }
-      onChange={(isOpen) => {
-        setOpen(open);
+    <View
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+        flexGrow: 1,
       }}
     >
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "yellow",
-          flexGrow: 1,
+      <Text style={styles.title}>Home</Text>
+      <Button
+        icon="camera"
+        mode="contained"
+        onPress={() => {
+          history.push({
+            pathname: "/account",
+            search: "?accountId=42",
+          });
         }}
       >
-        <Text style={styles.title}>Hosdme</Text>
-        <Button
-          icon="camera"
-          mode="contained"
-          onPress={() => {
-            history.push({
-              pathname: "/account",
-              search: "?accountId=42",
-            });
-          }}
-        >
-          Press me
-        </Button>
-      </View>
-    </SideMenu>
+        Press me
+      </Button>
+    </View>
   );
 };
 

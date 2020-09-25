@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import { getUrlParams } from "../utils/url";
 import { Drawer } from "react-native-paper";
-
+import { Translate } from "react-localize-redux";
 const Account = ({ history }) => {
   const [active, setActive] = React.useState("");
 
@@ -10,8 +10,17 @@ const Account = ({ history }) => {
   const { accountId } = urlParams;
 
   return (
-    <View>
-      <Text style={styles.title}>Account {accountId}</Text>
+    <View
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "yellow",
+        flexGrow: 1,
+      }}
+    >
+      {/* <Text style={styles.title}>
+        <Translate id="user.account" />
+      </Text> */}
       <Button
         color="blue"
         onPress={() => {
@@ -19,19 +28,6 @@ const Account = ({ history }) => {
         }}
         title="Back"
       />
-
-      <Drawer.Section title="Some title">
-        <Drawer.Item
-          label="First Item"
-          active={active === "first"}
-          onPress={() => setActive("first")}
-        />
-        <Drawer.Item
-          label="Second Item"
-          active={active === "second"}
-          onPress={() => setActive("second")}
-        />
-      </Drawer.Section>
     </View>
   );
 };
